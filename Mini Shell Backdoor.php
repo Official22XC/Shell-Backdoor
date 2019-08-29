@@ -237,7 +237,18 @@ if($_GET['aksi'] == 'buatfolder'){
 			<input type="submit" class="btn btn-outline-primary btn-block" value="Buat" name="folderss"></form>
 				</div>
 				</div>';
-}else 
+}elseif($_GET["aksi"] == 'buatfile'){
+	$namaF = $path.'/'.$_POST["nama_file"];
+	$isi = $_POST["isi"];
+	$buat = fopen($namaF,"w");
+	fwrite($buat,$isi);
+	fclose($buat);
+	if($buat == TRUE){
+		echo "<script>alert('Sukses')</script>";
+}else{
+echo "<script>alert('Gagal')</script>";
+}
+}else
 
 // Informasi Server
 
