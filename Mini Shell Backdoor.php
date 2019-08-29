@@ -26,11 +26,11 @@ function login_shell() {
 ?>
 <!DOCTYPE html>
 <html>
-	<title>{ IndoSec sHell }</title>
+	<title>22XploiterCrew</title>
 	<head>
 		<meta name="viewport" content="widht=device-widht, initial-scale=1.0"/>
-		<meta name="author" content="Holiq"/>
-		<meta name="copyright" content="{ IndoSec }"/>
+		<meta name="author" content="CodeXploit"/>
+		<meta name="copyright" content="22XploiterCrew"/>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
 	</head>
