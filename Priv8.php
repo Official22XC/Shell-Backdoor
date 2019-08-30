@@ -258,6 +258,7 @@ echo "
 		<meta name='author' content='CodeXploit'/>
 		<meta name='copyright' content='22XploiterCrew'/>
 		<meta name='description' content='Imutz Shell Backdoor'>
+                <meta name='theme-color' content='#000'>
 		<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css'>
 		<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' >
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
