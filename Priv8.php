@@ -1680,7 +1680,4 @@ if($ext == "php") {
 		echo '</table></div><hr/>';
 		echo "<a href='' class='scrollToTop'><i class='fas fa-arrow-up up'></i></a>";
 		echo '<center><small>Copyright all right reserved '.date('M-Y').' <a href="https://22xploitercrew.com">22XploiterCrew</a></small></center>';
-	/*  
-		End
-	*/
 ?>
