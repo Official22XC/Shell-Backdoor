@@ -1,4 +1,7 @@
 <?php
+/*
+[ Tidak Sepenuhnya Menggunakan Akal Dan Pikiran Kami Saat Membuat Shell Bangsad Ini ]
+*/
 session_start();
 error_reporting(0);
 set_time_limit(0);
