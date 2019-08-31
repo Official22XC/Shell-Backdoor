@@ -3,7 +3,7 @@
 [ Tak semua kami ngotak sendiri ]
 Special thanks for Holiq@Indosec
 Collabs team 22XploiterCrew ft Indosec Coder Team
-[ InonesiamGOV ]
+[ InonesianGOV ]
 */
 session_start();
 error_reporting(0);
